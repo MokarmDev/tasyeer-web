@@ -1,0 +1,197 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Tokens mirror the app (tasyeer-app/lib/config/theme, docs/design-system.md).
+ * Depth comes from cream page vs white card, not from shadows.
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-container: var(--primary-container);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-container: var(--secondary-container);
+  --color-support: var(--support);
+  --color-sage: var(--sage);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-outline: var(--outline);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-info: var(--info);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-whatsapp: var(--whatsapp);
+
+  --font-sans: var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+
+  /* App radii: sm 8 (chips) · md 12 (cards, inputs, buttons) · lg 16 (sheets) */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 28px;
+  --radius-4xl: 36px;
+}
+
+:root {
+  --radius: 12px;
+
+  --background: #f6f1e7;
+  --foreground: #263936;
+  --card: #ffffff;
+  --card-foreground: #263936;
+  --popover: #ffffff;
+  --popover-foreground: #263936;
+  --primary: #164e49;
+  --primary-foreground: #ffffff;
+  --primary-container: #cfe3d7;
+  --secondary: #527e72;
+  --secondary-foreground: #ffffff;
+  --secondary-container: #dcebe2;
+  --support: #527e72;
+  --sage: #a7c9b5;
+  --muted: #ece5d6;
+  --muted-foreground: #4c5c59;
+  --accent: #dcebe2;
+  --accent-foreground: #164e49;
+  --destructive: #b3261e;
+  --border: #ddd6c8;
+  --outline: #7a8784;
+  --input: #7a8784;
+  --ring: #164e49;
+
+  --success: #2e7d4f;
+  --info: #2c6694;
+  --warning: #9a5b00;
+  --error: #b3261e;
+  --whatsapp: #128c4b;
+
+  color-scheme: light;
+}
+
+.dark {
+  --background: #121a19;
+  --foreground: #e8efec;
+  --card: #1c2624;
+  --card-foreground: #e8efec;
+  --popover: #1c2624;
+  --popover-foreground: #e8efec;
+  --primary: #a7c9b5;
+  --primary-foreground: #102a27;
+  --primary-container: #2c5a53;
+  --secondary: #2a3b38;
+  --secondary-foreground: #e8efec;
+  --secondary-container: #2a3b38;
+  --support: #a7c9b5;
+  --sage: #a7c9b5;
+  --muted: #283431;
+  --muted-foreground: #b9c7c3;
+  --accent: #2a3b38;
+  --accent-foreground: #e8efec;
+  --destructive: #f2b8b5;
+  --border: #34423f;
+  --outline: #8a9a96;
+  --input: #8a9a96;
+  --ring: #a7c9b5;
+
+  --success: #86d3a3;
+  --info: #93c5ec;
+  --warning: #f0b860;
+  --error: #f2b8b5;
+  --whatsapp: #128c4b;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+    scrollbar-color: var(--outline) transparent;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    line-height: 1.7;
+    overflow-x: clip;
+    font-feature-settings: "kern";
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--sage);
+    color: #12302c;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Numbers, codes and Latin terms inside Arabic copy. */
+  .ltr-iso {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  /* Faint dot grid (pattern idea from patterncraft, drawn with --border). */
+  .bg-dots {
+    background-image: radial-gradient(var(--border) 1.2px, transparent 1.2px);
+    background-size: 22px 22px;
+  }
+
+  .container-page {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 1.5rem;
+    }
+  }
+}
