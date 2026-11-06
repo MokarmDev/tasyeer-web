@@ -62,9 +62,17 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t">
-        <div className="container-page flex flex-col gap-1 py-5 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-page flex flex-col gap-1 pt-5 pb-24 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © <span className="ltr-iso">2026</span> {site.name}. {site.tagline}.
+            © <span className="ltr-iso">2026</span> {site.name}. جميع الحقوق محفوظة. تطوير{" "}
+            <a
+              href={site.developer.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ltr-iso inline-block py-1 font-medium text-foreground underline underline-offset-4 transition-colors hover:text-primary"
+            >
+              {site.developer.name}
+            </a>
           </p>
           <p>مجاني في الإصدار الأول. {site.playStatus}.</p>
         </div>

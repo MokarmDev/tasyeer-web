@@ -24,6 +24,10 @@ export const site = {
     address: EMAIL,
     href: `mailto:${EMAIL}`,
   },
+  developer: {
+    name: "MokarmDev",
+    href: "https://github.com/MokarmDev",
+  },
   formEndpoint: FORMSPREE,
   isPlaceholder: {
     url: !process.env.NEXT_PUBLIC_SITE_URL,
