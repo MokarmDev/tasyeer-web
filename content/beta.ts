@@ -6,7 +6,7 @@ const STORE_URL = "https://play.google.com/store/apps/details?id=com.tasyeer.lau
 
 export const betaIntro = {
   tag: "اختبار مغلق",
-  title: "جرّب تسيير قبل صدوره",
+  title: "جرّب تسيير قبل إطلاقه",
   lead: "تسيير الآن في مرحلة الاختبار المغلق على Google Play. اتبع هذه الخطوات الثلاث بالترتيب لتحصل على التطبيق وتشاركنا رأيك.",
   note: "استخدم حساب Google نفسه في المجموعة وفي المتجر، فالتطبيق لا يظهر إلا للحساب المنضم إلى المجموعة.",
 };
